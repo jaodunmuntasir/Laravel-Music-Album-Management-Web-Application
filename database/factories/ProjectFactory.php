@@ -18,7 +18,7 @@ class ProjectFactory extends Factory
     {
         return [
             "name" => fake()->lastname(),
-            "description" => fake()->optional()->sentence(),
+            "description" => fake()->optional()->sentence(3),
             "image_url" => fake()->optional()->imageUrl(640, 480, 'music', true),
         ];
     }
