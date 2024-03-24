@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\Project;
 
 return new class extends Migration
 {
@@ -17,6 +18,8 @@ return new class extends Migration
             $table->string("name", 100);
             $table->string("filename", 200)->nullable();
             $table->string("color")->default("#ffffff"); // Default color is white if not specified
+
+            $table->foreignIdFor(Project::class)->constrained()->cascadeOnDelete(); // project_id (foreign key)
 
             $table->timestamps();
         });
