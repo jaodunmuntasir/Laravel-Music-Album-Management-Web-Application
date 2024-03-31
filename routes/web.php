@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\TrackController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Project;
 
@@ -32,3 +33,4 @@ Route::get('/', function () {
 // Route::post('/projects/{project}/delete', [ProjectController::class, "delete"]);
 
 Route::resource('projects', ProjectController::class);
+Route::resource('projects.tracks', TrackController::class)->shallow();

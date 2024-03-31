@@ -6,7 +6,7 @@
     <h2>{{ $project -> name }}</h2>
     <p>{{ $project -> description }}</p>
     <p>
-    <a href="{{ route("projects.edit", ["project" => $project -> id]) }}" class="btn btn-primary">Add new track</a>
+    <a href="{{ route("projects.tracks.create", ["project" => $project -> id]) }}" class="btn btn-primary">Add new track</a>
     
     <form action="{{ route("projects.destroy", ["project" => $project -> id]) }}" method="POST" class="d-inline">
         @csrf

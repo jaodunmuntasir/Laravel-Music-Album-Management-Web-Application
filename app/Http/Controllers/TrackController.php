@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Track;
 use App\Http\Requests\StoreTrackRequest;
 use App\Http\Requests\UpdateTrackRequest;
+use Illuminate\Http\Request;
 
 class TrackController extends Controller
 {
@@ -21,7 +22,7 @@ class TrackController extends Controller
      */
     public function create()
     {
-        //
+        return view('tracks.create');
     }
 
     /**
