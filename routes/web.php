@@ -34,3 +34,6 @@ Route::get('/', function () {
 
 Route::resource('projects', ProjectController::class);
 Route::resource('projects.tracks', TrackController::class)->shallow();
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
