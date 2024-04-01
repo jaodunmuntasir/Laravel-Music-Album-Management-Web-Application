@@ -31,6 +31,8 @@ jobs:
       run: touch database/database.sqlite
     - name: List database directory contents
       run: ls -la database
+    - name: Show current database connection settings
+      run: php artisan tinker --execute="'DB_CONNECTION:'.config('database.default').' DB_DATABASE:'.config('database.connections.'.config('database.default').'.database')"
     - name: Run Migrations
       run: php artisan migrate:fresh
     - name: Run Seeders
