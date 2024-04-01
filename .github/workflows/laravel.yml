@@ -28,9 +28,9 @@ jobs:
     - name: Create Database
       run: |
         mkdir -p database
-        touch database/mytracks.sqlite
+        touch mytracks.sqlite
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
         DB_CONNECTION: sqlite
-        DB_DATABASE: database/mytracks.sqlite
+        DB_DATABASE: mytracks.sqlite
       run: vendor/bin/phpunit
