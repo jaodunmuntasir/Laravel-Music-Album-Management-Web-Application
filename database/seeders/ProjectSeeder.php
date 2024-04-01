@@ -13,11 +13,16 @@ class ProjectSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('projects')->truncate();
-        DB::table('tracks')->truncate();
+        // DB::table('projects')->truncate();
+        // DB::table('tracks')->truncate();
 
-        \App\Models\Project::factory(20)
-        ->hasTracks(5)
-        ->create() ;
+        $users= \App\Models\User::all();
+
+        foreach ($users as $user) {
+            \App\Models\Project::factory(20)
+                ->for($user)
+                ->hasTracks(5)
+                ->create() ;
+        }
     }
 }
