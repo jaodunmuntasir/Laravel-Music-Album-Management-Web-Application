@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Track;
+use App\Models\Project;
 use App\Http\Requests\StoreTrackRequest;
 use App\Http\Requests\UpdateTrackRequest;
 use Illuminate\Http\Request;
@@ -20,17 +21,21 @@ class TrackController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Project $project)
     {
-        return view('tracks.create');
+        return view('tracks.create', [
+            'project' => $project,
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTrackRequest $request)
+    public function store(StoreTrackRequest $request, Project $project)
     {
-        //
+        $project -> tracks() -> create($request -> validated());
+
+        return redirect() -> route('projects.show', ['project' => $project]);
     }
 
     /**
