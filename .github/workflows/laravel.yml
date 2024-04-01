@@ -31,11 +31,15 @@ jobs:
       run: touch database/database.sqlite
     - name: List database directory contents
       run: ls -la database
-    - name: Show current database connection settings
-      run: php artisan tinker --execute="'DB_CONNECTION:'.config('database.default').' DB_DATABASE:'.config('database.connections.'.config('database.default').'.database')"
     - name: Run Migrations
+      env:
+        DB_CONNECTION: sqlite
+        DB_DATABASE: database.sqlite
       run: php artisan migrate:fresh
     - name: Run Seeders
+      env:
+        DB_CONNECTION: sqlite
+        DB_DATABASE: database.sqlite
       run: php artisan db:seed
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
