@@ -12,7 +12,7 @@
           <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="">
           @error('name')
             <div class="invalid-feedback">
-              Please choose a Track Name.
+              Please choose a Track Name
             </div>
           @enderror
         </div>
@@ -22,7 +22,7 @@
           <input name="filename" type="file" class="form-control @error('filename') is-invalid @enderror" id="file" placeholder="">
           @error('filename')
             <div class="invalid-feedback">
-              There's a problem with the file.
+              There's a problem with the file
             </div>
           @enderror
         </div>
@@ -32,7 +32,7 @@
           <input name="color" type="color" class="form-control form-control-color @error('color') is-invalid @enderror" id="color" placeholder="">
           @error('color')
             <div class="invalid-feedback">
-              Please choose a Color.
+              Please choose a Color
             </div>
           @enderror
         </div>
