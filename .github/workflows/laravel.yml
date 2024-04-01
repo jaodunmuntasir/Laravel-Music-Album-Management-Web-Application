@@ -29,6 +29,8 @@ jobs:
       run: mkdir -p database
     - name: Create SQLite Database
       run: touch database/database.sqlite
+    - name: List database directory contents
+      run: ls -la database
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
         DB_CONNECTION: sqlite
