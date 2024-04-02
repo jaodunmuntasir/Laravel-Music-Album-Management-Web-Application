@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProjectFormRequest;
 use Illuminate\Http\Request;
 use App\Models\Project;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
@@ -15,7 +16,7 @@ class ProjectController extends Controller
         //     [ "name" => "my project 3" ],
         // ];
 
-        $projects = Project::all();
+        $projects = Auth::user() -> projects; //Project::all();
 
         return view('projects.list', [
             "projects" => $projects,
@@ -35,10 +36,12 @@ class ProjectController extends Controller
 
         // Project::create($validatedData); // saving to database
 
-        Project::create($request -> validated()); 
+        //Project::create($request -> validated()); 
         // using validation rules defined in the model (app/Models/Project.php)
         /* Another way of creating a new instance of Project and saving it to the database: */
         
+        Auth::user() -> projects() -> create($request -> validated()); // associating the created project with the logged user
+
         return redirect("/projects");
     }
 
