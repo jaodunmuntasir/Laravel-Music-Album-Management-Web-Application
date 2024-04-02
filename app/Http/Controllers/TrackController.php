@@ -33,7 +33,8 @@ class TrackController extends Controller
      */
     public function store(StoreTrackRequest $request, Project $project)
     {
-        $project -> tracks() -> create($request -> validated());
+        Auth::user() -> projects() -> tracks() -> create($request -> validated());
+        //$project -> tracks() -> create($request -> validated());
 
         return redirect() -> route('projects.show', ['project' => $project]);
     }
