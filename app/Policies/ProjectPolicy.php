@@ -2,15 +2,16 @@
 
 namespace App\Policies;
 
-use App\Models\Track;
+use App\Models\Project;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class TrackPolicy
+class ProjectPolicy
 {
-    public function access(User $user, Track $track): bool
+    
+    public function access(User $user, Project $project): bool
     {
-        return $user->id === $track->project->user->id;
+        return $user->id === $project->user->id;
     }
     
     // /**
@@ -24,9 +25,9 @@ class TrackPolicy
     // /**
     //  * Determine whether the user can view the model.
     //  */
-    // public function view(User $user, Track $track): bool
+    // public function view(User $user, Project $project): bool
     // {
-    //     //
+    //     return $user->id === $project->user->id;
     // }
 
     // /**
@@ -40,7 +41,7 @@ class TrackPolicy
     // /**
     //  * Determine whether the user can update the model.
     //  */
-    // public function update(User $user, Track $track): bool
+    // public function update(User $user, Project $project): bool
     // {
     //     //
     // }
@@ -48,7 +49,7 @@ class TrackPolicy
     // /**
     //  * Determine whether the user can delete the model.
     //  */
-    // public function delete(User $user, Track $track): bool
+    // public function delete(User $user, Project $project): bool
     // {
     //     //
     // }
@@ -56,7 +57,7 @@ class TrackPolicy
     // /**
     //  * Determine whether the user can restore the model.
     //  */
-    // public function restore(User $user, Track $track): bool
+    // public function restore(User $user, Project $project): bool
     // {
     //     //
     // }
@@ -64,7 +65,7 @@ class TrackPolicy
     // /**
     //  * Determine whether the user can permanently delete the model.
     //  */
-    // public function forceDelete(User $user, Track $track): bool
+    // public function forceDelete(User $user, Project $project): bool
     // {
     //     //
     // }

@@ -47,6 +47,8 @@ class ProjectController extends Controller
 
     public function show(Project $project) {
         // $project = Project::findOrFail($id);
+
+        $this -> authorize('access', $project); // Policy authorization
         return view('projects.show', [
             "project" => $project,
         ]); // projects/show.blade.php
@@ -54,6 +56,8 @@ class ProjectController extends Controller
 
     public function edit(Project $project) {
         // $project = Project::findOrFail($id);
+
+        $this -> authorize('access', $project); // Policy authorization
         return view('projects.edit', [
             "project" => $project,
         ]);
@@ -69,12 +73,14 @@ class ProjectController extends Controller
         // // $project = Project::findOrFail(Project $project);
         // $project -> update($validatedData); // saving to database
         
+        $this -> authorize('access', $project); // Policy authorization
         $project -> update($request -> validated());
         return redirect("/projects/{$project -> id}");
     }
 
     public function destroy(Project $project) {
         // $project = Project::findOrFail($id);
+        $this -> authorize('access', $project); // Policy authorization
         $project -> delete(); 
 
         return redirect('/projects');
